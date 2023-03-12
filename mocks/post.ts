@@ -1,6 +1,7 @@
 import Post from "../interfaces/Post.ts";
 
-const posts: Post[] = [
+// deno-lint-ignore prefer-const
+let posts: Post[] = [
 	{
 		id: self.crypto.randomUUID(),
 		title: "First Post",
