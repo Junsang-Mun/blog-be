@@ -35,18 +35,18 @@ export default {
 	},
 	getPostById: (ctx: RouterContext) => {
 		const post: Post | undefined = posts.find((t) => {
-			return t.id === params.id;
+			return t.id === ctx.params.id;
 		});
 		if (!post) {
-			response.status = 404;
-			response.body = {
+			ctx.response.status = 404;
+			ctx.response.body = {
 				success: false,
 				message: "No such post",
 			};
 			return;
 		}
-		response.status = 200;
-		response.body = {
+		ctx.response.status = 200;
+		ctx.response.body = {
 			success: true,
 			data: post,
 		};
