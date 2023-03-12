@@ -1,4 +1,5 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
+import { oakCors } from "https://deno.land/x/cors/mod.ts";
 import postController from "./controllers/post.ts"
 
 const router = new Router();
@@ -11,6 +12,7 @@ router
 
 const app = new Application();
 const port = 8080;
+app.use(oakCors());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
