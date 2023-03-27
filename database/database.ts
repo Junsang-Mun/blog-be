@@ -15,5 +15,16 @@ const connector = new PostgresConnector({
 const db = new Database(connector);
 
 class Post extends Model {
-  id: { primaryKey: true, autoIncrement: true };
+  static table = "posts";
+  static timestamps = true;
+
+  static fields = {
+    id: { primaryKey: true, autoIncrement: true },
+    title: DataTypes.STRING,
+    body: DataTypes.STRING,
+    time: DataTypes.DATE
+  };
 }
+
+db.link([Post]);
+await db.sync({ drop: true });
